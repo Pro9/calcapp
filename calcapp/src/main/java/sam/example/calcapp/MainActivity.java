@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -57,7 +60,43 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            Button btAdd = (Button)rootView.findViewById(R.id.btAdd);
+            Button btSub = (Button)rootView.findViewById(R.id.btSub);
+
+            btAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int n1, n2;
+
+                    EditText numberField1 = (EditText)rootView.findViewById(R.id.numberField1);
+                    EditText numberField2 = (EditText)rootView.findViewById(R.id.numberField2);
+
+                    n1 = Integer.parseInt(numberField1.getText().toString());
+                    n2 = Integer.parseInt(numberField2.getText().toString());
+
+                    TextView tvResult = (TextView)rootView.findViewById(R.id.tvResult);
+                    tvResult.setText("Result: "+(n1+n2));
+                }
+            });
+
+            btSub.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int n1, n2;
+
+                    EditText numberField1 = (EditText)rootView.findViewById(R.id.numberField1);
+                    EditText numberField2 = (EditText)rootView.findViewById(R.id.numberField2);
+
+                    n1 = Integer.parseInt(numberField1.getText().toString());
+                    n2 = Integer.parseInt(numberField2.getText().toString());
+
+                    TextView tvResult = (TextView)rootView.findViewById(R.id.tvResult);
+                    tvResult.setText("Result: "+(n1-n2));
+                }
+            });
+
             return rootView;
         }
     }

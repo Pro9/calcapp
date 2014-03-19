@@ -1,0 +1,3 @@
+After setting up the project run this in the command prompt in the directory of your project:
+gradlew build
+
